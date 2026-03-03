@@ -1,7 +1,7 @@
 # 🏛️ City of Montgomery Economic Engine
 
 **A real-time, AI-driven civic intelligence and economic forecasting platform.**
-*Built by Team Good - Vibes for the 2026 GenAI Academy Global Hackathon.*
+*Built by Kat Wolfe & Jennifer Watters on Team Good-Vibes for the 2026 GenAI Academy Global Hackathon.*
 CEE (City Economic Engine) is the name of the app and it plays on the word "see".
 
 ## 📌 The Vision
