@@ -1,54 +1,62 @@
-# 🏛️ City of Montgomery Economic Engine
+# Montgomery CEE: City Data as a Service (CDaaS)
 
-**A real-time, AI-driven civic intelligence and economic forecasting platform.**
-*Built by Kat Wolfe & Jennifer Watters on Team Good-Vibes for the 2026 GenAI Academy Global Hackathon.*
-CEE (City Economic Engine) is the name of the app and it plays on the word "see".
+**A Vibe-Coded Accountability Engine for Civic Investments**
 
-## 📌 The Vision
-Economic development and city planning currently rely on heavily fragmented, lagging data. The **City of Montgomery Economic Engine** solves this by fusing deep historical municipal data with live, web - scraped corporate intent signals. Powered by Google Antigravity, this platform provides a daily momentum index and a 365 - day predictive forecast, transforming how Montgomery attracts capital, supports its citizens, and negotiates with hyperscale data centers.
+**Team Good-Vibes:** Kat Wolfe & Jennifer Watters  
+**Event:** GenAI Academy Hackathon - March 2026  
+**Challenge Track:** Workforce, Business & Economic Growth  
 
-## 👥 Persona - Driven Architecture (Target ICPs)
-The dashboard dynamically shifts its data visualizations and tools to serve four distinct Ideal Customer Profiles shaping the city's future:
-1. **Economic Development Organizations (EDOs):** Tracking live job velocity, corporate intent, and business licenses to win site selectors and negotiate tech investments.
-2. **Commercial Real Estate Investors & Developers:** Validating capital risk by analyzing commercial building permits, zoning lookups, and real - time lease absorption rates.
-3. **Citizens & Relocators:** Assessing hyper - local survival metrics like active housing inventory, student - to - teacher ratios, and neighborhood safety scores.
-4. **City Planners & IT Leadership:** Monitoring 311/911 infrastructure strain, predicting municipal service loads, and ensuring inclusive wealth growth.
+---
 
-## ⚙️ The Data Engine & AI Pipelines
-To achieve daily forecasting without hallucination, our backend employs a **"Split Horizon"** architecture. It orchestrates three distinct data pipelines into the Google Antigravity engine, ensuring both deep historical context and lightning - fast current signals.
+## 🎯 The Transparency Gap
+Meta and DC BLOX pledged $1.53 billion and over 100 permanent, high-wage jobs to Montgomery. It is a massive civic win - but how does local government actually verify those promises? 
 
-### Pipeline A: Bright Data Web Scraper (Live Intent Velocity)
-* **Constraint:** Strictly filters for web signals from **January 1, 2025, onward** to guarantee maximum freshness, processing speed, and relevance for our GTM trends reporting.
-* **Data:** Job posting velocity, salary bands, active rent/buy housing inventory, real - time Cost of Living (COL) index, and corporate relocation intent keywords.
+Right now, Economic Development Offices (EDOs) are forced to wait two years for lagging census data, long after the window to intervene has closed. City leaders are making billion-dollar bets blindfolded. 
 
-### Pipeline B: Montgomery Open Data (Municipal Baseline)
-* **Constraint:** Pulls structural historical data from **January 1, 2021, onward** to establish a reliable 5 - year civic baseline capturing the post - pandemic economic recovery.
-* **Transactional (Live):** New business licenses and building permits (using exact issue dates).
-* **Batched (Lagging):** 311 infrastructure and 911 emergency dispatch volumes. *Antigravity mathematically interpolates these monthly batches into a smooth daily run - rate.*
+**Montgomery CEE** solves this. We replace lagging guesswork with real-time accountability. We don't just visualize the economy - we score the promise.
 
-### Pipeline C: Federal APIs (Macro Structure)
-* **Constraint:** Pulls structural historical data from **January 1, 2021, onward**.
-* **Data:** Median household income, poverty estimates, unemployment rates (FRED), and school district ratings (GreatSchools). 
+---
 
-### The Antigravity AI Orchestrator
-Google Antigravity ingests these three pipelines. It interpolates the historical Municipal and Macro data (2021 baseline), overlays the live Bright Data web signals (2025 baseline), and calculates a daily 0 to 100 momentum score across six civic categories. It then generates a 365 - day predictive forecast array (`isForecast: true`) and pushes the final JSON to Firebase.
+## ⚙️ The Split Horizon Architecture
+To eliminate AI hallucinations and provide mathematically grounded insights, CEE utilizes a three-tiered data architecture:
 
-## 🛠️ Core Features & Tools
-* **Interactive Time - Series Forecasting:** Toggle between *Historical Statistics* (Jan 1, 2021 - Present) and *Future Trends* (1 - Year Projections).
-* **AI Site Selector & Relocation Chatbot:** A RAG - powered assistant that answers hyper - local queries (e.g., "Which neighborhoods have the best walkability and home prices under $300k?").
-* **Hyperscaler ROI Simulator:** An interactive widget allowing city planners to adjust data center water usage, grid draw, and tax abatements to instantly calculate the net fiscal impact on the city.
+* **Layer 1: Municipal Baseline (The Ground Truth)**
+    We ingest verifiable data directly from the **City of Montgomery Open Data Portal** (tracking new business licenses and commercial permits) and **FRED** (tracking baseline unemployment). 
+* **Layer 2: Live Intent (Powered by Bright Data)**
+    To bypass the census lag, we integrate the **Bright Data Web Unlocker**. We scour LinkedIn and local Montgomery job boards to pull real-time talent mobility metrics, new tech roles, and out-of-state relocation signals directly from the labor market.
+* **Layer 3: Live AI Synthesis (Google AI Studio)**
+    **Google AI Studio** synthesizes the live intent signals against the municipal baseline. This engine generates a live "AI Confidence Score" regarding corporate promises and triggers actionable civic interventions.
 
-## 💻 Tech Stack & UI/UX Guidelines
-* **Frontend:** Next.js, React, Recharts.
-* **Backend / Database:** Firebase Firestore.
-* **AI / Orchestration:** Google Antigravity.
-* **Data Extraction:** Bright Data Web Unlockers, City of Montgomery ArcGIS.
-* **Brand Styling:** Strictly adheres to official Montgomery municipal hex codes: Navy (`#032045`), Gold (`#B98646`), and Gray (`#343434`).
+---
 
-## 🚀 Local Development Setup
+## 💡 Social Value & Active Intervention
+CEE is not a passive dashboard. It is an active intervention engine designed for immediate civic ROI. 
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/your-org/good-vibes.git](https://github.com/your-org/good-vibes.git)
+If our Bright Data pipeline flags a 40% out-of-state relocation ratio for newly created tech roles, Google AI Studio immediately recommends triggering a local Alabama State University (ASU) hiring fair protocol. We catch the gap today so the city can intervene tomorrow - ensuring wealth is redirected back to Montgomery residents. 
 
-🟢 Live Demo: Click here to view the active dashboard
+---
+
+## 🛠️ Tech Stack
+* **Frontend UI:** Next.js, React, Tailwind CSS
+* **Live Data Scraping:** Bright Data API
+* **Government APIs:** City of Montgomery Open Data API, FRED API
+* **AI Synthesis:** Google AI Studio
+
+🔍 Technical Methodology & Anticipated FAQ
+To ensure total transparency in our engineering process, we have outlined the specific logic behind the Montgomery CEE architecture.
+
+1. How do you prevent municipal API data from hallucinating massive spikes in the dashboard?
+Targeted for IT Leadership & Data Governance (Tony Porterfield)
+When pulling from the Montgomery Open Data Portal, a raw API call for "Business Licenses" returns historical, active, and renewed licenses - creating artificially massive numbers. To provide a true "Ripple Effect" metric, our backend specifically filters the API payload for new issuances only starting after the corporate commitment date, and filters by specific NAICS (North American Industry Classification System) codes related to commercial HVAC, logistics, and IT services. This ensures the dashboard reflects actual ecosystem growth, not administrative renewals.
+
+2. Why use Bright Data instead of standard job board APIs?
+Targeted for Developer Relations & Data Pipelines (Rafael Levi)
+Standard job board APIs are notoriously delayed and heavily restricted. By utilizing the Bright Data Web Unlocker, we bypass standard anti-bot defenses on platforms like Dice and Indeed. This allows us to scrape unstructured, real-time intent signals - such as salary bands, active hiring surges, and candidate location updates. We aren't just counting job postings; we are scraping the metadata of the labor market to track the velocity of the $1.53B investment.
+
+3. How does the platform differentiate between out-of-state relocations and local talent absorption?
+Targeted for Civic Strategy & University Leadership (Bryn Bakoyema)
+Tracking the raw number of jobs created is insufficient if those jobs bypass the citizens of Montgomery. Our web scraping pipeline includes targeted keyword matching against local university pipelines (e.g., "Alabama State University" and "Auburn University at Montgomery"). By cross-referencing new data center hires with these educational keywords and recent graduation years, we provide Economic Development Offices with a live "Local Absorption vs. Relocation" ratio to ensure civic equity.
+
+4. What exactly is Google AI Studio doing in this architecture?
+Targeted for GenAI Technical Judges (Janson Lim, Chris McMilan, Remus Ranca, Sam Cummings)
+The core problem is that municipal data is structured but lagging, while web-scraped intent data is real-time but unstructured. Google AI Studio acts as the synthesis engine. It ingests the raw Bright Data JSON payloads (job postings, salary averages, relocation signals) and cross-references them against the static baselines (FRED unemployment, municipal permits). It then mathematically weights these signals to generate the dynamic AI Confidence Score for both Workforce Vitality and the Economic Ripple Effect.
