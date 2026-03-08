@@ -5,7 +5,7 @@
 **Team Good-Vibes:** Kat Wolfe & Jennifer Watters  
 **Event:** GenAI Academy Hackathon - March 09, 2026  
 **Challenge Track:** Workforce, Business & Economic Growth  
-
+https://jenai.ca/montgomery-transparency-gap
 ---
 
 ## 🎯 The Transparency Gap
