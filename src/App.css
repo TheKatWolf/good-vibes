@@ -1,0 +1,1515 @@
+/* Layout */
+:root {
+  --bg-deep: #080F1E;
+  --bg-main: #0A1628;
+  --bg-card: #0F1E35;
+  --bg-elevated: #111F33;
+  --border: #1A2F4A;
+  --border-gold: #C9A84C;
+  --gold: #C9A84C;
+  --gold-bright: #E8C56A;
+  --gold-dim: #6B5420;
+  --text-primary: #F0EDE6;
+  --text-secondary: #8A9BB5;
+  --text-muted: #3D5270;
+  --comparison-blue: #2E5090;
+  --green-live: #2ECC71;
+
+  --text: var(--text-primary);
+
+  --navy: var(--bg-main);
+  --white: var(--text-primary);
+  --muted: var(--text-secondary);
+  --gray: var(--border);
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--bg-main);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(201, 168, 76, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: 0 0;
+  mix-blend-mode: screen;
+  opacity: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-main);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 40px;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo {
+  height: 60px;
+  width: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+}
+
+.brand-line {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 700;
+}
+
+.brand-line-1 {
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.brand-line-2 {
+  font-size: 20px;
+  color: var(--gold);
+}
+
+.brand-line-3 {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.header-muted {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+}
+.sync-btn {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: rgba(201, 168, 76, 0.14);
+  color: var(--gold-bright);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  padding: 9px 14px;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: background 0.2s, border-color 0.2s, filter 0.2s, transform 0.2s;
+}
+.sync-btn:hover:not(:disabled) {
+  background: rgba(201, 168, 76, 0.2);
+  border-color: rgba(201, 168, 76, 0.55);
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+.sync-btn:disabled {
+  cursor: not-allowed;
+}
+.sync-btn.syncing {
+  background: rgba(201, 168, 76, 0.25);
+  color: var(--gold);
+}
+.sync-btn.syncing .sync-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(28, 46, 66, 0.55);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.sync-btn.success {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.sync-btn.error {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.sync-message {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+.sync-message.error {
+  color: var(--gold);
+}
+.header-sync-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Hero */
+.hero {
+  padding: 56px 0 64px;
+}
+.hero-kicker {
+  margin: 0 0 14px;
+  text-align: center;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 108px;
+  color: var(--text-primary);
+  margin: 0 0 22px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+.hero-divider {
+  height: 1px;
+  max-width: 520px;
+  margin: 0 auto 34px;
+  background: linear-gradient(90deg, rgba(201, 168, 76, 0), rgba(201, 168, 76, 0.22), rgba(201, 168, 76, 0));
+}
+.hero .hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+.hero .hero-stat {
+  text-align: center;
+  position: relative;
+  padding: 0 40px;
+}
+.hero .hero-stat:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: rgba(26, 47, 74, 0.9);
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.06);
+}
+.hero-stat-value {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 0 10px;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+}
+
+.hero .hero-stat-value {
+  font-size: 72px;
+}
+.hero-stat-label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.hero-stat-subtitle {
+  margin: 8px 0 0;
+}
+
+/* Date range */
+.date-range {
+  margin-bottom: 32px;
+}
+.date-range-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.date-range-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.date-btn {
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid rgba(26, 47, 74, 0.95);
+  background: rgba(15, 30, 53, 0.65);
+  color: var(--text-secondary);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, filter 0.2s;
+}
+.date-btn:hover {
+  border-color: rgba(201, 168, 76, 0.35);
+  background: rgba(15, 30, 53, 0.85);
+  filter: brightness(1.05);
+}
+.date-btn.active {
+  background: rgba(201, 168, 76, 0.16);
+  color: var(--gold-bright);
+  border-color: rgba(201, 168, 76, 0.65);
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.12), 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+
+/* Impact cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.card-full {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: none;
+}
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-gold);
+  border-radius: 10px;
+  padding: 32px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  background-image:
+    linear-gradient(180deg, rgba(232, 197, 106, 0.05), rgba(232, 197, 106, 0) 40%),
+    radial-gradient(1200px 420px at 10% 0%, rgba(201, 168, 76, 0.08), rgba(201, 168, 76, 0));
+}
+
+.card.card--feature {
+  border-color: rgba(26, 47, 74, 0.9);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+.workforce-donut {
+  display: grid;
+  place-items: center;
+  margin-top: 2px;
+  margin-bottom: 16px;
+}
+
+.workforce-donut-svg {
+  width: 220px;
+  height: 220px;
+}
+
+.workforce-donut-track {
+  stroke: rgba(28, 46, 66, 0.7);
+}
+
+.workforce-donut-arc {
+  stroke: var(--gold);
+  transform: rotate(-90deg);
+  transform-origin: 60px 60px;
+  transition: stroke-dashoffset 0.6s ease;
+  filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.25));
+}
+
+.workforce-donut-value {
+  fill: var(--gold);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.workforce-donut-label {
+  fill: var(--text-muted);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.workforce-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.workforce-stat {
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.workforce-stat-label {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.workforce-stat-value {
+  margin: 6px 0 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.workforce-stat-median .workforce-stat-value {
+  color: var(--border);
+}
+
+.workforce-stat-avg .workforce-stat-value {
+  color: var(--gold);
+}
+
+.workforce-distribution {
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(28, 46, 66, 0.35);
+  border: 1px solid rgba(28, 46, 66, 0.75);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.workforce-dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(201, 168, 76, 0.9);
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.22);
+  opacity: 0.95;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(26, 47, 74, 0.95), rgba(26, 47, 74, 0.35), rgba(201, 168, 76, 0.12));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.card-badge {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 0;
+  border-radius: 0;
+  color: var(--gold);
+}
+.card-badge.on-track {
+  background: transparent;
+}
+.card-badge.emerging {
+  background: transparent;
+}
+
+.card-badge.wage {
+  background: transparent;
+}
+
+.card-section-label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+}
+
+.promise-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.32);
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* Wage Intelligence */
+.wage-card .card-label {
+  max-width: 640px;
+}
+
+.wage-grid {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(26, 47, 74, 0.95);
+  background: rgba(15, 30, 53, 0.55);
+  border-radius: 10px;
+}
+
+.wage-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.wage-name {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.wage-value-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.1;
+}
+
+.wage-unit {
+  margin-top: 4px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.wage-annual {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.wage-premium {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.wage-premium-stat {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(26, 47, 74, 0.95);
+  background: rgba(15, 30, 53, 0.55);
+}
+
+.wage-premium-label {
+  display: block;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.wage-premium-value {
+  display: block;
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.05;
+}
+
+.workforce-salary-compare {
+  display: grid;
+  gap: 12px;
+}
+
+.salary-bar-row {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.salary-bar-left {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.salary-bar-left.salary-bar-left-gold {
+  color: var(--gold);
+}
+
+.salary-bar-track {
+  height: 36px;
+  background: rgba(26, 47, 74, 0.55);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(26, 47, 74, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(201, 168, 76, 0.05);
+}
+
+.salary-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.salary-bar-fill-mont {
+  background: linear-gradient(90deg, rgba(46, 80, 144, 0.9), rgba(46, 80, 144, 0.55));
+}
+
+.salary-bar-fill-gold {
+  background: linear-gradient(90deg, rgba(201, 168, 76, 1), rgba(232, 197, 106, 0.9));
+  box-shadow: 0 0 18px rgba(201, 168, 76, 0.18);
+}
+
+.salary-bar-right {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.workforce-premium-statement {
+  margin: 12px 0 0;
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.22);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.year-bar-track {
+  height: 14px;
+  background: rgba(26, 47, 74, 0.55);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(26, 47, 74, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(201, 168, 76, 0.05);
+  margin-top: 8px;
+}
+
+.year-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  position: relative;
+}
+
+.year-bar-fill--primary {
+  background: linear-gradient(90deg, rgba(201, 168, 76, 1), rgba(232, 197, 106, 0.9));
+  box-shadow: 0 0 18px rgba(201, 168, 76, 0.18);
+}
+
+.year-bar-fill--compare {
+  background: linear-gradient(90deg, rgba(46, 80, 144, 0.9), rgba(46, 80, 144, 0.55));
+}
+
+.workforce-spotlight {
+  margin-top: 20px;
+  background: #0A1628;
+  border: 1px solid #1A2F4A;
+  border-left: 3px solid var(--gold);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.spotlight-company {
+  margin: 8px 0 6px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.spotlight-title {
+  margin: 0 0 10px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.spotlight-salary {
+  margin: 0 0 8px;
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.spotlight-tag {
+  margin: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.card-badge.synthesis {
+  background: rgba(46, 204, 113, 0.08);
+  border: 1px solid rgba(46, 204, 113, 0.55);
+  color: rgba(46, 204, 113, 0.95);
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.synthesis-text {
+  margin: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.synthesis-unavailable {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.synthesis-empty-note {
+  margin-top: 10px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.powered-by {
+  margin: 0;
+}
+.card-big-number {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 0 8px;
+}
+
+.card-anchor-number {
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 1;
+}
+.card-label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+.progress-wrap {
+  height: 8px;
+  background: var(--gray);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+.trend-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 56px;
+  margin-bottom: 20px;
+}
+
+.trend-bar-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.trend-bar-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin: 6px 0 0;
+  letter-spacing: 0.02em;
+}
+
+.trend-bar-value {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  position: absolute;
+  left: 8px;
+  top: 8px;
+}
+.trend-bar {
+  width: 100%;
+  background: var(--gold);
+  border-radius: 2px 2px 0 0;
+  opacity: 0.85;
+  transition: height 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.trend-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(232, 197, 106, 0.12), rgba(232, 197, 106, 0));
+}
+
+.bar-value {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.bar-growth-badge {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bg-deep);
+  background: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.6);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.section-rule {
+  height: 1px;
+  background: rgba(201, 168, 76, 0.18);
+  margin: 26px 0;
+}
+
+.card-stats {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.source-line {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+}
+
+.support-stat-number {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: var(--text-primary);
+  font-size: 28px;
+  line-height: 1.1;
+  margin: 0;
+}
+.card-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.card-link:hover {
+  text-decoration: none;
+  filter: brightness(1.15);
+}
+
+/* Jobs section */
+.jobs-section {
+  padding-bottom: 56px;
+}
+
+.job-stats-bar {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 40px;
+  margin-bottom: 32px;
+
+  background-image: linear-gradient(180deg, rgba(232, 197, 106, 0.04), rgba(232, 197, 106, 0) 48%);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.job-stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(201, 168, 76, 0.18);
+  align-self: center;
+}
+
+.job-stat {
+  text-align: center;
+  min-width: 0;
+  flex: 1;
+  padding: 0 18px;
+}
+
+.job-stat-number {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 80px;
+  color: var(--gold);
+  line-height: 1;
+  font-weight: 700;
+  margin: 0;
+  display: block;
+}
+
+.job-stat-label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 9px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 8px;
+  margin-bottom: 0;
+  display: block;
+}
+
+.card-anchor-number {
+  font-size: 60px;
+}
+
+.synthesis-body-empty {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.jobs-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.jobs-title {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green-live);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .jobs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.job-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.job-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border-color: var(--border-gold);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  font-size: 28px;
+  line-height: 1.05;
+}
+
+.card-subtitle {
+  margin-top: 6px;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  opacity: 0.95;
+}
+
+.card-section-label--prominent {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  opacity: 0.92;
+}
+
+.workforce-premium-line {
+  margin: 12px 0 0;
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.workforce-premium-number {
+  color: var(--gold);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.workforce-premium-text {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.workforce-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 22px;
+}
+
+.card-subline {
+  color: var(--gold);
+}
+
+
+.top-cards {
+  align-items: stretch;
+}
+
+.workforce-spotlight {
+  margin-top: auto;
+}
+
+.workforce-card .card-stats.source-line {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.ripple-card {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 22px;
+}
+
+.ripple-card .card-stats.source-line {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.sparkline-wrap {
+  position: relative;
+}
+
+.sparkline-end-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  transform: translateY(-100%);
+}
+
+.sparkline-end-left {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.sparkline-end-right {
+  color: var(--gold);
+}
+.job-title {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+.job-company {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.job-type {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.job-type-linkedin,
+.job-type-indeed {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.job-salary {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 16px;
+  color: var(--gold);
+  margin: 16px 0 0;
+}
+.load-more-wrap {
+  margin-top: 28px;
+  text-align: center;
+}
+.load-more-btn {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.load-more-btn:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--gold);
+  background: var(--bg-main);
+  padding: 20px 24px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+.footer-left,
+.footer-right {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+ .footer-left {
+  white-space: nowrap;
+ }
+
+.stakeholder-section {
+  background: var(--bg-deep);
+  border-top: 1px solid rgba(201, 168, 76, 0.18);
+  padding: 36px 24px;
+}
+
+.stakeholder-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stakeholder-title {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.stakeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.stakeholder-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.stakeholder-icon {
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.stakeholder-icon-square {
+  border-radius: 3px;
+}
+
+.stakeholder-icon-circle {
+  border-radius: 999px;
+}
+
+.stakeholder-label {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.stakeholder-sub {
+  margin: 4px 0 0;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .stakeholder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero {
+    padding: 44px 0 40px;
+  }
+
+  .hero h1 {
+    font-size: 72px;
+  }
+
+  .hero .hero-stat-value {
+    font-size: 48px;
+  }
+
+  .job-stats-bar {
+    padding: 18px 16px;
+    gap: 28px;
+  }
+
+  .hero .hero-stats {
+    gap: 22px;
+  }
+
+  .hero .hero-stat {
+    padding: 0 0;
+  }
+
+  .hero .hero-stat:not(:first-child)::before {
+    display: none;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .header-title {
+    font-size: 0.95rem;
+  }
+
+  .header-right {
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .sync-message {
+    display: none;
+  }
+
+  .stakeholder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  /* Fix horizontal overflow on all cards */
+  .app, .container, main, section {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Fix job stats bar - stack vertically */
+  .job-stats-bar {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .job-stat-divider {
+    width: 100%;
+    height: 1px;
+    background: #1A2F4A;
+  }
+
+  .job-stat-number {
+    font-size: 2.5rem !important;
+  }
+
+  /* Fix wage intelligence - prevent overflow */
+  .wage-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .wage-premium {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .wage-premium-stat {
+    width: 100%;
+  }
+
+  /* Fix community card badge wrapping */
+  .community-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Fix cards grid - single column */
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix stakeholder grid */
+  .stakeholder-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix synthesis card overflow */
+  .synthesis-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Fix date range buttons */
+  .date-range-btns {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .date-btn {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  /* Fix hero stats */
+  .hero-stats {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
+  /* Fix payroll progress numbers */
+  .payroll-verified, .payroll-goal {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Fix overall page overflow */
+  .app {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Fix synthesis card text overflow */
+  .card-full {
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .synthesis-text {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Fix wage rows - stack value under label */
+  .wage-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 0;
+  }
+
+  .wage-value-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .wage-annual {
+    font-size: 1rem;
+  }
+
+  /* Fix wage premium - stack vertically */
+  .wage-premium {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .wage-premium-stat {
+    width: 100% !important;
+    padding: 12px !important;
+  }
+
+  /* Fix community card header badge wrapping */
+  .community-header,
+  [style*="justifyContent: space-between"] {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  /* Ensure all cards don't overflow */
+  .card, .card-full, .wage-card {
+    overflow: hidden;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 16px !important;
+  }
+
+  /* Fix container padding */
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}

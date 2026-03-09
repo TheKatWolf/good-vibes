@@ -1,0 +1,44 @@
+:root {
+  --navy: #032045;
+  --gold: #B98646;
+  --gray: #343434;
+  --white: #ffffff;
+  --muted: rgba(255, 255, 255, 0.65);
+  --green-badge: #2d8a5e;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--white);
+  background-color: var(--navy);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.font-mono {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+}
