@@ -2,7 +2,7 @@
 
 **A Vibe-Coded Accountability Engine for Civic Investments**
 
-**Team Good-Vibes:** Kat Wolfe & Jennifer Watters  
+**Team Good-Vibes:** Kat Wolfe & Jennifer Watters  (learning, completed project by vibe coding)
 **Event:** GenAI Academy Hackathon - March 09, 2026  
 **Challenge Track:** Workforce, Business & Economic Growth  
 https://jenai.ca/montgomery-transparency-gap
